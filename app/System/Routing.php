@@ -23,17 +23,18 @@ class Routing
     ];
   }
 
-  public function match($url)
+  public function match()
   {
+    $url = $_SERVER['REQUEST_URI'];
     $method = strtoupper($_SERVER['REQUEST_METHOD']);
-
+    
     foreach ($this->routes as $route)
     {
       if ($method == $route['method'] && preg_match($route['route'], $url, $matches))
       {
         return [
           'route' => $route,
-          'matches' => $matches,
+          'matches' => array_slice($matches, 1),
         ];
       }
     }

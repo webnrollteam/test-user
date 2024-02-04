@@ -5,6 +5,7 @@ use App\System\Container;
 use App\System\Request;
 use App\System\Response;
 use App\System\Routing;
+use App\System\Template;
 
 class Kernel
 {
@@ -24,11 +25,15 @@ class Kernel
   {
     $route = Container::getInstance()
       ->get('routing')
-      ->match($_SERVER['REQUEST_URI']);
+      ->match();
 
     if ($route)
     {
-      $response = $route['route']['handler']($route['matches']);
+      $handler = $route['route']['handler'];
+      $controller = new $handler[0];
+      $response = call_user_func_array(
+        [$controller, $handler[1]], $route['matches']);
+
       if ($response)
       {
         $response->write();
@@ -45,5 +50,6 @@ class Kernel
   {
     Container::getInstance()->set('routing', new Routing());
     Container::getInstance()->set('request', new Request());
+    Container::getInstance()->set('template', new Template());
   }
 }

@@ -9,11 +9,11 @@ class Response
 
   private $status = 200;
 
-  public function __construct($body)
+  public function __construct($body = '')
   {
     $this->body = [$body];
   }
-  
+
   public function append($s)
   {
     $this->body[] = $s;
