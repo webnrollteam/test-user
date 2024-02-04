@@ -2,6 +2,7 @@
 namespace App;
 
 use App\System\Container;
+use App\System\Db;
 use App\System\Request;
 use App\System\Response;
 use App\System\Routing;
@@ -63,5 +64,6 @@ class Kernel
     Container::getInstance()->set('routing', new Routing());
     Container::getInstance()->set('request', new Request());
     Container::getInstance()->set('template', new Template());
+    Container::getInstance()->set('db', new Db());
   }
 }
