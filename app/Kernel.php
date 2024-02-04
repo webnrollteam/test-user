@@ -11,6 +11,13 @@ class Kernel
 {
   private static $instance;
 
+  private $config;
+
+  public function __construct()
+  {
+    $this->config = require(__DIR__ . '/config.php');
+  }
+
   public static function getInstance()
   {
     if (!self::$instance)
@@ -19,6 +26,11 @@ class Kernel
     }
 
     return self::$instance;
+  }
+
+  public function getParam($name)
+  {
+    return isset($this->config[$name]) ? $this->config[$name] : null;
   }
 
   public function serve()

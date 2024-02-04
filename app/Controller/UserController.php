@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller;
 
+use App\Kernel;
 use App\System\Container;
 
 class UserController
@@ -13,7 +14,7 @@ class UserController
   }
 
   public function form($id)
-  {
+  {    
     return Container::getInstance()
       ->get('template')
       ->render('user.form', [
