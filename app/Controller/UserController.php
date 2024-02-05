@@ -2,10 +2,15 @@
 
 namespace App\Controller;
 
-use App\System\Container;
-
 class UserController extends BaseController
 {
+  public function __construct()
+  {
+    $this->protected = true;
+    
+    parent::__construct();
+  }
+
   public function index()
   {
     $rows = $this->db->get('select * from user')

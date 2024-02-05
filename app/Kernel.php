@@ -1,6 +1,7 @@
 <?php
 namespace App;
 
+use App\System\Security;
 use App\System\Container;
 use App\System\Db;
 use App\System\Request;
@@ -61,9 +62,12 @@ class Kernel
 
   public function buildContainer()
   {
+    session_start();
+    
     Container::getInstance()->set('routing', new Routing());
     Container::getInstance()->set('request', new Request());
     Container::getInstance()->set('template', new Template());
     Container::getInstance()->set('db', new Db());
+    Container::getInstance()->set('security', new Security());
   }
 }

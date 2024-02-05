@@ -8,9 +8,14 @@ class Request
     return $this->xssClean($_GET[$name] ?? $_POST[$name]);
   }
 
+  public function getMethod()
+  {
+    return $_SERVER['REQUEST_METHOD'];
+  }
+
   private function xssClean($data)
   {
     $data = rawurldecode($data);
-    return filter_var($data, FILTER_SANITIZE_SPEC_CHARS);
+    return filter_var($data, FILTER_SANITIZE_SPECIAL_CHARS);
   }
 }

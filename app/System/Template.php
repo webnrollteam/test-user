@@ -3,7 +3,7 @@ namespace App\System;
 
 class Template
 {
-  public function render($template, $data)
+  public function render(string $template, $data = [])
   {
     // globals for template
     $DATA = $data;

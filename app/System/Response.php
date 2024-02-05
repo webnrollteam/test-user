@@ -41,17 +41,25 @@ class Response
     $this->location = $url;
   }
 
-  public function write()
+  public function write($end = false)
   {
     if ($this->location)
     {
       header('Location: ' . $this->location, true, $this->status);
+      if ($end)
+      {
+        exit();
+      }
       return;
     }
 
     header('Content-type: ' . $this->contentType, true, $this->status);
     header($this->contentType, true, $this->status);
     echo implode('', $this->body);
+    if ($end)
+    {
+      exit();
+    }
   }
 
   public function json($json)

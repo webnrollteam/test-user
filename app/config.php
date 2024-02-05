@@ -5,5 +5,9 @@ return [
     'database' => 'user',
     'username' => 'root',
     'password' => 'tiger',
+  ],
+
+  'security' => [
+    'login' => '/login/',
   ]
 ];
