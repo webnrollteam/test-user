@@ -1,14 +1,11 @@
 <?php
 namespace App\Controller;
 
-use App\System\Container;
-
-class HomeController
+class HomeController extends BaseController
 {
   public function index()
   {
-    return Container::getInstance()
-      ->get('template')
+    return $this->template
       ->render('home', []);
   }
 }

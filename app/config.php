@@ -1,9 +1,9 @@
 <?php
 return [
   'database' => [
-    'hostname' => 'localhost',
+    'hostname' => 'database',
     'database' => 'user',
-    'username' => 'docker',
-    'password' => 'docker',
+    'username' => 'root',
+    'password' => 'tiger',
   ]
 ];

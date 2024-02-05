@@ -1,24 +1,31 @@
 <?php
+
 namespace App\Controller;
 
-use App\Kernel;
 use App\System\Container;
 
-class UserController
+class UserController extends BaseController
 {
   public function index()
   {
-    return Container::getInstance()
-      ->get('template')
-      ->render('user', []);
+    $rows = $this->db->get('select * from user')
+      ->fetchAll();
+
+    return $this->template
+      ->render('user', [
+        'rows' => $rows
+      ]);
   }
 
   public function form($id)
-  {    
-    return Container::getInstance()
-      ->get('template')
+  {
+    $row = $this->db->get('select * from user where id = ?', ['i', $id])
+      ->fetch();
+
+    return $this->template
       ->render('user.form', [
-        'id' => $id
+        'id' => $id,
+        'row' => $row
       ]);
   }
 }

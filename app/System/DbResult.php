@@ -1,21 +1,21 @@
 <?php
 namespace App\System;
 
-use App\Kernel;
-
 class DbResult
 {
-  public function __construct($hresult)
-  {
+  private \mysqli_result $hresult;
 
+  public function __construct(\mysqli_result $hresult)
+  {
+    $this->hresult = $hresult;
   }
 
-  public function getArray()
+  public function fetchAll()
   {
-    return [];
+    return $this->hresult->fetch_all(MYSQLI_ASSOC);
   }
 
-  public function getSingle() {
-    return [];
+  public function fetch() {
+    return $this->hresult->fetch_array(MYSQLI_ASSOC);
   }
 }
