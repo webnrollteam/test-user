@@ -19,5 +19,6 @@ $routing->post('#^/login/$#', [ LoginController::class, 'index' ]);
 $routing->get('#^/logout/$#', [ LoginController::class, 'logout' ]);
 $routing->get('#^/user/$#', [ UserController::class, 'index' ]);
 $routing->get('#^/user/(\d+)/$#', [ UserController::class, 'form' ]);
+$routing->post('#^/user/(\d+)/$#', [ UserController::class, 'save' ]);
 
 Kernel::getInstance()->serve();

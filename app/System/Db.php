@@ -17,7 +17,7 @@ class Db
       $config['password'], $config['database']);
   }
 
-  public function query(string $sql, array $params = null): mysqli_result
+  public function query(string $sql, array $params = null): mysqli_result | bool
   {
     if (!$params)
     {

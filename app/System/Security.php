@@ -39,9 +39,14 @@ class Security
       json_decode($_SESSION[$this->sessionKey], true) : null;
   }
 
+  public function hashPassword($password)
+  {
+    return md5($password);
+  }
+
   private function findUser($email, $password)
   {
-    $hashPassword = md5($password);
+    $hashPassword = $this->hashPassword($password);
 
     $db = Container::getInstance()->get('db');
 

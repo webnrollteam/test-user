@@ -2,7 +2,11 @@
 
 <p><a class="btn btn-link" href="/user/">Назад</a></p>
 
-<form method="PUT">
+<?php foreach ($DATA['errors'] as $error):?>
+<div class="alert alert-danger"><?php echo $error;?></div>
+<?php endforeach;?>
+
+<form method="POST">
   <table class="table">
     <?php if ($DATA['row']['id']) : ?>
       <tr>
@@ -20,10 +24,12 @@
     </tr>
     <tr>
       <td rowspan="2">Пароль</td>
-      <td><input type="password" class="form-control" name="password1" /></td>
+      <td><input type="password" class="form-control" name="password1"
+        <?php if (!$DATA['id']):?>required<?php endif;?>/></td>
     </tr>
     <tr>
-      <td><input type="password" class="form-control" name="password2" /></td>
+      <td><input type="password" class="form-control" name="password2"
+        <?php if (!$DATA['id']):?>required<?php endif;?>/></td>
     </tr>
     <tr>
       <td></td>
