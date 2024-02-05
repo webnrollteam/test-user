@@ -10,3 +10,7 @@ CREATE TABLE `user`.`user` (
 ENGINE=InnoDB
 DEFAULT CHARSET=utf8mb4
 COLLATE=utf8mb4_0900_ai_ci;
+
+INSERT INTO `user`.`user`
+(id, name, email, password)
+VALUES(1, 'Алексей', 'info@web-n-roll.ru', '827ccb0eea8a706c4c34a16891f84e7b');
