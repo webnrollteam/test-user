@@ -13,5 +13,8 @@
     <label for="exampleInputPassword1" class="form-label">Пароль</label>
     <input type="password" name="password" class="form-control" id="exampleInputPassword1" required>
   </div>
+  <div class="mb-3">
+    <a href="/register/">Регистрация</a>
+  </div>
   <button type="submit" class="btn btn-primary">Войти</button>
 </form>

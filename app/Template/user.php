@@ -18,9 +18,9 @@
         <td><?= $user['email'] ?></td>
         <td><?= $user['name'] ?></td>
         <td>
-          <a class="btn btn-primary" href="/user/<?=$user['id']?>/">Редактировать</a>
-          <button class="btn btn-danger">
-          <i class="bi bi-trash"></i>
+          <a class="btn btn-primary" href="/user/<?= $user['id'] ?>/">Редактировать</a>
+          <button class="btn btn-danger js-user-delete" data-id="<?= $user['id'] ?>">
+            <i class="bi bi-trash"></i>
           </button>
         </td>
       </tr>

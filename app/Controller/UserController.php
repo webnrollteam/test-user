@@ -44,17 +44,23 @@ class UserController extends BaseController
     }
 
     $data['row'] = $row;
-    
+
+    $_SESSION['token'] = md5(uniqid(mt_rand(), true));
+    $data['token'] = $_SESSION['token'];
+
     return $this->template
       ->render('user.form', $data);
   }
 
   public function save($id)
   {
-    $data = [
-      'id' => $id,
-      'errors' => [],
-    ];
+    $token = $this->request->get('token');
+
+    if (!$token || $token !== $_SESSION['token']) {
+      return (new Response())
+        ->setStatus(405)
+        ->write(true);
+    }
 
     if ($id == 0 && !$this->request->get('password1'))
     {
@@ -91,5 +97,14 @@ class UserController extends BaseController
 
     return (new Response())
       ->redirect('/user/');
+  }
+
+  public function delete($id)
+  {
+    $this->db->query('delete from user where id = ?', ['i', $id]);
+
+    return (new Response())->json([
+      'success' => true,
+    ]);
   }
 }

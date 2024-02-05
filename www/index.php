@@ -5,6 +5,7 @@ use App\System\Container;
 use App\Controller\HomeController;
 use App\Controller\UserController;
 use App\Controller\LoginController;
+use App\Controller\RegisterController;
 
 define('APP_DIR', __DIR__ . '/../app');
 
@@ -20,5 +21,8 @@ $routing->get('#^/logout/$#', [ LoginController::class, 'logout' ]);
 $routing->get('#^/user/$#', [ UserController::class, 'index' ]);
 $routing->get('#^/user/(\d+)/$#', [ UserController::class, 'form' ]);
 $routing->post('#^/user/(\d+)/$#', [ UserController::class, 'save' ]);
+$routing->delete('#^/user/(\d+)/$#', [ UserController::class, 'delete' ]);
+$routing->get('#^/register/$#', [ RegisterController::class, 'form' ]);
+$routing->post('#^/register/$#', [ RegisterController::class, 'register' ]);
 
 Kernel::getInstance()->serve();

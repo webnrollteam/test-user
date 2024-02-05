@@ -1,6 +1,6 @@
-<h1>Пользователь</h1>
+<h1>Регистрация</h1>
 
-<p><a class="btn btn-link" href="/user/">Назад</a></p>
+<p><a class="btn btn-link" href="/login/">Назад</a></p>
 
 <?php foreach ($DATA['errors'] as $error):?>
 <div class="alert alert-danger"><?php echo $error;?></div>
@@ -10,12 +10,6 @@
   <input type="hidden" name="token" value="<?= $DATA['token']?>"/>
   
   <table class="table">
-    <?php if ($DATA['row']['id']) : ?>
-      <tr>
-        <td>ID</td>
-        <td><?= $DATA['row']['id'] ?></td>
-      </tr>
-    <?php endif; ?>
     <tr>
       <td>Email</td>
       <td><input type="email" name="email" class="form-control" value="<?= $DATA['row']['email'] ?>" required /></td>
@@ -26,12 +20,10 @@
     </tr>
     <tr>
       <td rowspan="2">Пароль</td>
-      <td><input type="password" class="form-control" name="password1"
-        <?php if (!$DATA['id']):?>required<?php endif;?>/></td>
+      <td><input type="password" class="form-control" name="password1" required /></td>
     </tr>
     <tr>
-      <td><input type="password" class="form-control" name="password2"
-        <?php if (!$DATA['id']):?>required<?php endif;?>/></td>
+      <td><input type="password" class="form-control" name="password2" required /></td>
     </tr>
     <tr>
       <td></td>

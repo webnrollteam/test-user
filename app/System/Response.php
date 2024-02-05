@@ -14,31 +14,37 @@ class Response
   public function __construct($body = '')
   {
     $this->body = [$body];
+    return $this;
   }
 
   public function append($s)
   {
     $this->body[] = $s;
+    return $this;
   }
 
   public function set($s)
   {
     $this->body = [$s];
+    return $this;
   }
 
   public function setStatus($status)
   {
     $this->status = $status;
+    return $this;
   }
 
   public function setContentType($contentType)
   {
     $this->contentType = $contentType;
+    return $this;
   }
 
   public function setLocation($url)
   {
     $this->location = $url;
+    return $this;
   }
 
   public function write($end = false)
