@@ -22,6 +22,15 @@ class UserController extends BaseController
     $row = $this->db->get('select * from user where id = ?', ['i', $id])
       ->fetch();
 
+    if (!$row)
+    {
+      $row = [
+        'id' => '',
+        'email' => '',
+        'name' => '',
+      ];
+    }
+
     return $this->template
       ->render('user.form', [
         'id' => $id,

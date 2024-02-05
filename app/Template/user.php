@@ -1,6 +1,8 @@
 <h1>Пользователи</h1>
 
-<table>
+<p><a class="btn btn-primary" href="/user/0/">Создать пользователя</a></p>
+
+<table class="table">
   <thead>
     <tr>
       <th>ID</th>
@@ -16,8 +18,10 @@
         <td><?= $user['email'] ?></td>
         <td><?= $user['name'] ?></td>
         <td>
-          <a href="/user/<?=$user['id']?>/">Редактировать</a>
-          <button>Удалить</button>
+          <a class="btn btn-primary" href="/user/<?=$user['id']?>/">Редактировать</a>
+          <button class="btn btn-danger">
+          <i class="bi bi-trash"></i>
+          </button>
         </td>
       </tr>
     <? endforeach; ?>
