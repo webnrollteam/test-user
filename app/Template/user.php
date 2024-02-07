@@ -11,8 +11,8 @@
       <th></th>
     </tr>
   </thead>
-  <tbody>
-    <? foreach ($DATA['rows'] as $user) : ?>
+  <tbody id="js-user-list">
+    <!-- <? foreach ($DATA['rows'] as $user) : ?>
       <tr>
         <td><?= $user['id'] ?></td>
         <td><?= $user['email'] ?></td>
@@ -24,6 +24,33 @@
           </button>
         </td>
       </tr>
-    <? endforeach; ?>
+    <? endforeach; ?> -->
   </tbody>
 </table>
+
+<script id="tmpl-row-user" type="text/x-jquery-tmpl">
+  {{each rows}}
+  <tr>
+    <td>${id}</td>
+    <td>${email}</td>
+    <td>${name}</td>
+    <td>
+      <a class="btn btn-primary" href="/user/${id}/">Редактировать</a>
+      <button class="btn btn-danger js-user-delete" data-id="${id}">
+        <i class="bi bi-trash"></i>
+      </button>
+    </td>
+  </tr>
+  {{/each}}
+</script>
+
+<script>
+  $(function() {
+    $.ajax({
+      url: '/api/v1/user/',
+      method: 'GET'
+    }).then(function(result) {
+      $('#tmpl-row-user').tmpl(result).appendTo('#js-user-list');
+    });
+  });
+</script>

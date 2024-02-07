@@ -21,8 +21,10 @@ $routing->get('#^/logout/$#', [ LoginController::class, 'logout' ]);
 $routing->get('#^/user/$#', [ UserController::class, 'index' ]);
 $routing->get('#^/user/(\d+)/$#', [ UserController::class, 'form' ]);
 $routing->post('#^/user/(\d+)/$#', [ UserController::class, 'save' ]);
-$routing->delete('#^/user/(\d+)/$#', [ UserController::class, 'delete' ]);
 $routing->get('#^/register/$#', [ RegisterController::class, 'form' ]);
 $routing->post('#^/register/$#', [ RegisterController::class, 'register' ]);
+
+$routing->get('#^/api/v1/user/$#', [ UserController::class, 'list' ]);
+$routing->delete('#^/api/v1/user/(\d+)/$#', [ UserController::class, 'delete' ]);
 
 Kernel::getInstance()->serve();

@@ -39,4 +39,9 @@ class BaseController
       exit();
     }
   }
+
+  public function json($data)
+  {
+    return (new Response())->json($data);
+  }
 }

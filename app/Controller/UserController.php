@@ -24,6 +24,16 @@ class UserController extends BaseController
       ]);
   }
 
+  public function list()
+  {
+    $rows = $this->db->get('select * from user')
+      ->fetchAll();
+
+    return $this->json([
+      'rows' => $rows
+    ]);
+  }
+
   public function form($id, $errors = [])
   {
     $data = [
